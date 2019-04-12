@@ -1,0 +1,41 @@
+# Binary-Translate_beta
+# Meu estudo em Python. Meu primeiro projeto proprio, está simples porem funcional, comforme minha evolução adicionarei uma are grafica.
+campoA = ('A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j',
+          'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't',
+          'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z', ' ')
+campoB = ('01000001', '01100001', '01000010', '01100010', '01000011', '01100011', '01000100', '01100100', '01000101',
+          '01100101', '01000110', '01100110', '01000111', '01100111', '01001000', '01101000', '01001001', '01101001',
+          '01001010', '01101010', '01001011', '01101011', '01001100', '01101100', '01001101', '01101101', '01001110',
+          '01101110', '01001111', '01101111', '01010000', '01110000', '01010001', '01110001', '01010010', '01110010',
+          '01010011', '01110011', '01010100', '01110100', '01010101', '01110101', '01010110', '01110110', '01010111',
+          '01110111', '01011000', '01111000', '01011001', '01111001', '01011010', '01111010', '00100000')
+listinha = []
+lista2 = []
+lista3 = []
+print('\033[1;31mTo translate text in Bin press T, for translate Bin in Text press T for quit press Q.\033[m')
+while True:
+    toTranslate = str(input('[T/B/Q] :')).upper().strip()[0]
+    while toTranslate not in 'TBQ':
+        toTranslate = str(input('[T/B/Q] :')).upper().strip()[0]
+    if toTranslate == 'T':
+        text = str(input('Write your text and press enter: '))
+        for i in text:
+            print(campoB[campoA.index(i)], end='')
+        print('')
+    elif toTranslate == 'B':
+        listinha.clear()
+        text2 = input('Write your cod Binary: ').strip()
+        total = int(len(text2)/8)
+        cont1 = 0
+        cont2 = 8
+        for i in range(0, total):
+            listinha.append(text2[cont1:cont2])
+            cont1 += 8
+            cont2 += 8
+        for k, v in enumerate(listinha):
+            if v in campoB:
+                print(campoA[campoB.index(v)], end='')
+        print('')
+
+    elif toTranslate == 'Q':
+        break
